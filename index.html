@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>wooclap-afc-7432</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: white;
-    }
-    #bang {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: black;
-      color: red;
-      font-size: 80px;
-      text-align: center;
-      padding-top: 30%;
-      z-index: 9999;
-    }
-  </style>
-</head>
-<body>
-  <div id="bang">💥 BANG 💥</div>
-  <audio id="bangSound" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
-
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-  <script src="script.js"></script>
-
+  <meta charset="UTF-8" />
+  <title>Wooclap-AFC</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
+    // Configuration Firebase (à remplacer par la tienne)
+    const firebaseConfig = {
+      apiKey: "XXX",
+      authDomain: "XXX.firebaseapp.com",
+      projectId: "XXX",
+      databaseURL: "https://XXX.firebaseio.com",
+      storageBucket: "XXX.appspot.com",
+      messagingSenderId: "XXX",
+      appId: "XXX"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Écoute des ordres depuis Firebase
+    firebase.database().ref("bangTrigger").on("value", (snap) => {
+      if (snap.val() === true) {
+        alert("💥 BANG 💥");
+        const audio = new Audio("bang.mp3");
+        audio.play();
+      }
+    });
+
+    // Redirection avec un petit délai (ex: 3s)
     setTimeout(() => {
       window.location.href = "https://app.wooclap.com/MXRLMR?from=instruction-slide";
-    }, 100); // délai très court
+    }, 3000); // 3 secondes
+  </script>
+</head>
+<body>
+</body>
+</html>
+
   </script>
 </body>
 </html>
