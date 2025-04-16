@@ -6,21 +6,21 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
     const firebaseConfig = {
-    apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
-    authDomain: " https://wooclap-afc-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "wooclap-afc",
-    storageBucket: "wooclap-afc.firebasestorage.app",
-    messagingSenderId: "684510100391",
-    appId: "1:684510100391:web:60407c6ed96543f7909482"
-  };
-
+      apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
+      authDomain: "wooclap-afc.firebaseapp.com", // ✅ Corrigé
+      databaseURL: "https://wooclap-afc-default-rtdb.europe-west1.firebasedatabase.app", // ✅ Ajouté
+      projectId: "wooclap-afc",
+      storageBucket: "wooclap-afc.appspot.com", // ✅ Petite correction aussi ici
+      messagingSenderId: "684510100391",
+      appId: "1:684510100391:web:60407c6ed96543f7909482"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
     function sendBang() {
       db.ref("bangTrigger").set(true);
-      setTimeout(() => db.ref("bangTrigger").set(false), 10000); // reset au bout de 10s
+      setTimeout(() => db.ref("bangTrigger").set(false), 10000); // reset après 10s
     }
   </script>
 </head>
@@ -29,4 +29,3 @@
 </body>
 </html>
 
- 
