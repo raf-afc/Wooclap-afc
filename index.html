@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
-  <title>Wooclap-AFC</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Déclencher BANG</title>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
@@ -20,36 +19,13 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    db.ref("bangTrigger").on("value", (snap) => {
-      if (snap.val() === true) {
-        // 💥 Joue le son
-        const audio = new Audio("bang.mp3");
-        audio.play();
-
-        // Remet à false pour éviter de rejouer à chaque fois
-        db.ref("bangTrigger").set(false);
-
-        // Redirection après le BANG
-        setTimeout(() => {
-          window.location.href = "https://app.wooclap.com/MXRLMR?from=instruction-slide";
-        }, 1000);
-      }
-    });
+    function sendBang() {
+      db.ref("bang/trigger").set(true);
+    }
   </script>
 </head>
 <body>
+  <button onclick="sendBang()" style="font-size: 2rem; padding: 1rem;">💥 Déclencher le BANG</button>
 </body>
 </html>
-
-    setTimeout(() => {
-      window.location.href = "https://app.wooclap.com/MXRLMR?from=instruction-slide";
-    }, 1000); // 3 secondes
-  </script>
-</head>
-<body>
-</body>
-</html>
-
-  </script>
-</body>
-</html>
+  
