@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
-  <meta charset="UTF-8">
-  <title>Control Panel - wooclap-afc</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding-top: 100px;
+<html>
+<head>
+  <title>Déclencher BANG</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      // mêmes infos que dans index.html
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function sendBang() {
+      db.ref("bangTrigger").set(true);
+      setTimeout(() => db.ref("bangTrigger").set(false), 10000); // reset au bout de 10s
     }
-    button {
-      font-size: 32px;
-      padding: 20px 40px;
-      background-color: crimson;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-  </style>
+  </script>
 </head>
 <body>
-  <h1>Trigger the BANG</h1>
-  <button onclick="triggerBang()">💥 BANG 💥</button>
+  <button onclick="sendBang()">💥 Déclencher le BANG</button>
+</body>
+</html>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   <script>
 const firebaseConfig = {
