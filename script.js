@@ -1,15 +1,13 @@
 // Ce script doit être inclus dans la page des participants (ex: via console ou injection)
 
-const firebaseConfig = {
-  apiKey: "TON_API_KEY",
-  authDomain: "TON_AUTH_DOMAIN",
-  databaseURL: "TON_DATABASE_URL",
-  projectId: "TON_PROJECT_ID",
-  storageBucket: "TON_STORAGE_BUCKET",
-  messagingSenderId: "TON_SENDER_ID",
-  appId: "TON_APP_ID"
-};
-
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
+    authDomain: "wooclap-afc.firebaseapp.com",
+    projectId: "wooclap-afc",
+    storageBucket: "wooclap-afc.firebasestorage.app",
+    messagingSenderId: "684510100391",
+    appId: "1:684510100391:web:60407c6ed96543f7909482"
+  };
 firebase.initializeApp(firebaseConfig);
 
 firebase.database().ref("bang").on("value", (snapshot) => {
