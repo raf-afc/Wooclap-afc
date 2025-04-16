@@ -6,8 +6,14 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
     const firebaseConfig = {
-      // mêmes infos que dans index.html
-    };
+    apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
+    authDomain: "wooclap-afc.firebaseapp.com",
+    projectId: "wooclap-afc",
+    storageBucket: "wooclap-afc.firebasestorage.app",
+    messagingSenderId: "684510100391",
+    appId: "1:684510100391:web:60407c6ed96543f7909482"
+  };
+
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
@@ -23,30 +29,4 @@
 </body>
 </html>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-  <script>
-const firebaseConfig = {
-    apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
-    authDomain: "wooclap-afc.firebaseapp.com",
-    projectId: "wooclap-afc",
-    storageBucket: "wooclap-afc.firebasestorage.app",
-    messagingSenderId: "684510100391",
-    appId: "1:684510100391:web:60407c6ed96543f7909482"
-  };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    function triggerBang() {
-      db.ref("bang").set({
-        active: true,
-        timestamp: Date.now()
-      });
-
-      setTimeout(() => {
-        db.ref("bang").set({ active: false });
-      }, 5000); // le BANG dure 5 sec
-    }
-  </script>
-</body>
-</html>
+ 
