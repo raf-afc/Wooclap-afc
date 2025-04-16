@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Déclencher BANG</title>
+  <title>Wooclap-AFC</title>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
-      authDomain: "wooclap-afc.firebaseapp.com",
-      databaseURL: "https://wooclap-afc-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "wooclap-afc",
-      storageBucket: "wooclap-afc.appspot.com",
-      messagingSenderId: "684510100391",
-      appId: "1:684510100391:web:60407c6ed96543f7909482"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    function sendBang() {
-      db.ref("bang/trigger").set(true);
+  <script src="script.js"></script> <!-- Inclut ton script.js ici -->
+  <style>
+    /* Assurer que l'iframe prend tout l'écran */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
-  </script>
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <button onclick="sendBang()" style="font-size: 2rem; padding: 1rem;">💥 Déclencher le BANG</button>
+  <!-- Ajouter un iframe de Wooclap qui prend tout l'écran -->
+  <iframe src="https://app.wooclap.com/MXRLMR?from=instruction-slide"></iframe>
+
+  <script>
+    // Code Firebase pour détecter le BANG et autres actions
+    // N'oublie pas de réagir au trigger comme dans le précédent script.
+  </script>
 </body>
 </html>
-  
