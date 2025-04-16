@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>wooclap-afc-7432</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+    }
+    #bang {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: black;
+      color: red;
+      font-size: 80px;
+      text-align: center;
+      padding-top: 30%;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div id="bang">💥 BANG 💥</div>
+  <audio id="bangSound" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "https://app.wooclap.com/ZQPHBG?from=instruction-slide";
+    }, 100); // délai très court
+  </script>
+</body>
+</html>
