@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8" />
   <title>Déclencher BANG</title>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
-      authDomain: "wooclap-afc.firebaseapp.com", // ✅ Corrigé
-      databaseURL: "https://wooclap-afc-default-rtdb.europe-west1.firebasedatabase.app", // ✅ Ajouté
+      authDomain: "wooclap-afc.firebaseapp.com",
+      databaseURL: "https://wooclap-afc-default-rtdb.europe-west1.firebasedatabase.app",
       projectId: "wooclap-afc",
-      storageBucket: "wooclap-afc.appspot.com", // ✅ Petite correction aussi ici
+      storageBucket: "wooclap-afc.appspot.com",
       messagingSenderId: "684510100391",
       appId: "1:684510100391:web:60407c6ed96543f7909482"
     };
@@ -19,13 +20,13 @@
     const db = firebase.database();
 
     function sendBang() {
-      db.ref("bangTrigger").set(true);
-      setTimeout(() => db.ref("bangTrigger").set(false), 10000); // reset après 10s
+      db.ref("bang/trigger").set(true);
     }
   </script>
 </head>
 <body>
-  <button onclick="sendBang()">💥 Déclencher le BANG</button>
+  <button onclick="sendBang()" style="font-size: 2rem; padding: 1rem;">💥 Déclencher le BANG</button>
 </body>
 </html>
+
 
