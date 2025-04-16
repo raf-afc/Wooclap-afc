@@ -1,26 +1,45 @@
+// Ce script doit être inclus dans la page des participants (ex: via console ou injection)
+
 const firebaseConfig = {
-    apiKey: "AIzaSyDKx-0AUjb2rlCI5c6Zlhjp_i8pYSlKc0k",
-    authDomain: "wooclap-afc.firebaseapp.com",
-    projectId: "wooclap-afc",
-    storageBucket: "wooclap-afc.firebasestorage.app",
-    messagingSenderId: "684510100391",
-    appId: "1:684510100391:web:60407c6ed96543f7909482"
-  };
-  
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-  
-  const bangDiv = document.getElementById("bang");
-  const bangSound = document.getElementById("bangSound");
-  
-  db.ref("bang").on("value", (snapshot) => {
-    const data = snapshot.val();
-    if (data && data.active) {
-      bangDiv.style.display = "block";
-      bangSound.play().catch(() => {}); // au cas où l'audio est bloqué
-      setTimeout(() => {
-        bangDiv.style.display = "none";
-      }, 5000);
-    }
+  apiKey: "TON_API_KEY",
+  authDomain: "TON_AUTH_DOMAIN",
+  databaseURL: "TON_DATABASE_URL",
+  projectId: "TON_PROJECT_ID",
+  storageBucket: "TON_STORAGE_BUCKET",
+  messagingSenderId: "TON_SENDER_ID",
+  appId: "TON_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+firebase.database().ref("bang").on("value", (snapshot) => {
+  const data = snapshot.val();
+  if (data && data.trigger) {
+    showBang();
+  }
+});
+
+function showBang() {
+  const div = document.createElement("div");
+  div.style.position = "fixed";
+  div.style.top = 0;
+  div.style.left = 0;
+  div.style.width = "100vw";
+  div.style.height = "100vh";
+  div.style.background = "white";
+  div.style.display = "flex";
+  div.style.alignItems = "center";
+  div.style.justifyContent = "center";
+  div.style.fontSize = "80px";
+  div.style.fontWeight = "bold";
+  div.style.zIndex = 9999;
+  div.innerText = "BANG";
+  document.body.appendChild(div);
+
+  const audio = new Audio("bang.mp3");
+  audio.play().catch(() => {
+    console.log("Le son n’a pas pu être joué automatiquement.");
   });
-  
+
+  setTimeout(() => document.body.removeChild(div), 5000);
+}
